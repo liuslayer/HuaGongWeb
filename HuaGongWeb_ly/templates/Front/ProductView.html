@@ -1,0 +1,61 @@
+﻿#parse("Front/Head.html")
+<script type="text/javascript" src="scripts/ajax.js"></script>
+<script type="text/javascript" src="scripts/ckeditor/ckeditor.js"></script>
+<script type="text/javascript">
+    function LoadProductComments()
+    {
+        ajax("ProductCommentAJAX.ashx?Action=Load&ProductId=$Model.Product.Id", function (result)
+        {
+            var comments = JSON.parse(result);
+            var ulComments = document.getElementById("ulComments");
+            ulComments.innerHTML = "";
+            for (var i = 0; i < comments.length; i++) {
+                var liComment = document.createElement("li");
+                liComment.innerHTML = comments[i].CreateDateTime + "|" + comments[i].Title + "|" + comments[i].Msg;
+                ulComments.appendChild(liComment);
+            }
+        })
+    }
+
+    function PostComment()
+    {
+        var commentTitle = document.getElementById("CommentTitle").value;
+        //var commentMsg = document.getElementById("CommentMsg").value;
+        var commentMsg = CKEDITOR.instances.CommentMsg.document.getBody().getText();//获取文本内容值
+        if (commentTitle.length < 1)
+        {
+            alert("标题不能为空！");
+            return;
+        }
+        if (commentMsg.length < 1)
+        {
+            alert("内容不能为空！");
+            return;
+        }
+        ajax("ProductCommentAJAX.ashx?Action=Post&ProductId=" + $Model.Product.Id + "&Title=" + commentTitle + "&Msg=" + commentMsg, function (result) {
+            if (result == "suc") {
+                document.getElementById("CommentTitle").value = "";
+                CKEDITOR.instances.CommentMsg.setData('');//清空文本内容
+                LoadProductComments();
+            }
+            else {
+                alert(result);
+            }
+        })
+    }
+</script>
+<center><h1>$Model.Product.name</h1></center>
+<p><img src="$Model.Product.ImagePath" width="800" height="600" /></p>
+<p>$Model.Product.Msg</p>
+<ul id="ulComments"></ul>
+<script type="text/javascript">
+    LoadProductComments();
+</script>
+<p>标题：<input type="text" id="CommentTitle"/></p>
+<p>内容：<textarea id="CommentMsg" cols="30" rows="5"></textarea></p>
+<script type="text/javascript">
+    var commentMsg = document.getElementById("CommentMsg");
+    CKEDITOR.replace(commentMsg);
+</script>
+<p><input type="submit" value="提交" onclick="PostComment()" /></p>
+#parse("Front/Foot.html")

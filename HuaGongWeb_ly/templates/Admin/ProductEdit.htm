@@ -1,0 +1,47 @@
+﻿#parse("Admin/Head.htm")
+
+<script type="text/javascript" src="../scripts/ckeditor/ckeditor.js"></script>
+<form method="post" action="ProductEdit.ashx" enctype="multipart/form-data">
+    <input type="hidden" name="IsPostback" value="true" />
+    <input type="hidden" name="Action" value="$Model.Action" />
+    #if($Model.Action=="Edit")
+    <input type="hidden" name="Id" value="$Model.Product.Id" />
+    #end
+    <p>
+        名称:<input type="text" name="Name" value="$Model.Product.Name" />
+    </p>
+    <p>
+        分类:<select name="CategoryId">
+            #foreach($c in $Model.Categories)
+            #if($c.Id==$Model.Product.CategoryId)
+            <option value="$c.Id" selected>$c.Name</option>
+            #else
+            <option value="$c.Id">$c.Name</option>
+            #end
+            #end
+        </select>
+    </p>
+    <p>
+        产品图片:<input type="file" name="ProductImage" />
+        #if($Model.Action=="Edit")
+        <img src="$Model.Product.ImagePath" width="50" height="50" />
+        #end
+    </p>
+    <p>
+        产品描述:<textarea id="Msg" name="Msg">$Model.Product.Msg</textarea>
+        <script type="text/javascript">
+            var msg = document.getElementById("Msg");
+            CKEDITOR.replace(msg);
+        </script>
+    </p>
+    <p>
+        是否推荐：
+        #if($Model.Product.IsRecommend=="True")
+        <input type="checkbox" name="IsRecommend" checked />
+        #else
+        <input type="checkbox" name="IsRecommend" />
+        #end
+    </p>
+    <p><input type="submit" value="保存" /></p>
+</form>
+#parse("Admin/Foot.htm") 

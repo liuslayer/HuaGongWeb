@@ -1,0 +1,44 @@
+﻿#parse("Admin/Head.htm")
+<p>
+    <a href="SysUsersEdit.ashx?Action=AddNew">新增用户</a>
+</p>
+<table>
+    <thead>
+        <tr>
+            <td>
+                编辑
+            </td>
+            <td>
+                删除
+            </td>
+            <td>
+                用户名
+            </td>
+            <td>
+                真实名
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        #foreach($s in $Model.SysUsers)
+        <tr>
+            <td>
+                <a href="SysUsersEdit.ashx?Action=Edit&Id=$s.Id">编辑</a>
+            </td>
+            <td>
+                <a href="SysUsersEdit.ashx?Action=Delete&Id=$s.Id">删除</a>
+            </td>
+            <td>
+                $s.Name
+            </td>
+            <td>
+                $s.RealName
+            </td>
+        </tr>
+        #end
+    </tbody>
+</table>
+<p>
+    #foreach($page in $Model.PageData) <a href="$page.Href">$page.Title</a> #end
+</p>
+#parse("Admin/Foot.htm")

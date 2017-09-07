@@ -1,0 +1,16 @@
+﻿#parse("Admin/Head.htm")
+<form method="post" action="Settings.ashx">
+    <input type="hidden" name="IsPostback" value="true"/>
+    <p>网站名：<input type="text" name="SiteName" value="$Model.Settings.SiteName" /></p>
+    <p>网址：<input type="text" name="SiteURL" value="$Model.Settings.SiteURL" /></p>
+    <p>地址：<input type="text" name="Address" value="$Model.Settings.Address" /></p>
+    <p>邮编：<input type="text" name="PostCode" value="$Model.Settings.PostCode" /></p>
+    <p>联系人：<input type="text" name="ContactPerson" value="$Model.Settings.ContactPerson" /></p>
+    <p>电话：<input type="text" name="TelPhone" value="$Model.Settings.TelPhone" /></p>
+    <p>传真：<input type="text" name="Fax" value="$Model.Settings.Fax" /></p>
+    <p>手机：<input type="text" name="Mobile" value="$Model.Settings.Mobile" /></p>
+    <p>邮箱：<input type="text" name="Email" value="$Model.Settings.Email" /></p>
+    <p><input type="submit" value="保存"/></p>
+</form>
+#parse("Admin/Foot.htm")
+

@@ -1,0 +1,38 @@
+﻿#parse("Admin/Head.htm")
+<script type="text/javascript" src="../scripts/ajax.js"></script>
+<script type="text/javascript">
+    function OnSave() {
+        var action = document.getElementById("Action").value;
+        var save = document.getElementById("Save").value;
+        var id = document.getElementById("Id").value;
+        var name = document.getElementById("Name").value;
+        var password = document.getElementById("Password").value;
+        var realName = document.getElementById("RealName").value;
+        var checkMsg = document.getElementById("CheckMsg");
+        if (name.length < 1 || password.length < 1 || realName < 1) {
+            checkMsg.innerHTML = "用户名或密码或真实名不能为空！";
+            return;
+        }
+        ajax("SysUsersEdit.ashx?Action=" + action + "&Save=" + save + "&Id=" + id + "&Name=" + name + "&Password=" + password + "&RealName=" + realName + "&CheckMsg=" + checkMsg, function (result) {
+            if (result != "") {
+                checkMsg.innerHTML = result;;
+                return;
+            }
+            else {
+                window.location.href = "SysUsersList.ashx";
+            }
+        })
+    }
+</script>
+<input type="hidden" id="Action" name="Action" value="$Model.Action" />
+<input type="hidden" id="Id" name="Id" value="$Model.SysUsers.Id" />
+<table>
+    <tbody>
+        <tr><td>用户名：</td><td><input type="text" id="Name" name="Name" value="$Model.SysUsers.Name" /></td><td><span id="NameMsg" style="color:Red"></span></td></tr>
+        <tr><td>密码：</td><td><input type="text" id="Password" name="Password" value="$Model.SysUsers.Password" /></td><td><span id="PasswordMsg" style="color:Red"></span></td></tr>
+        <tr><td>真实名：</td><td><input type="text" id="RealName" name="RealName" value="$Model.SysUsers.RealName" /></td><td><span id="RealNameMsg" style="color:Red"></span></td></tr>
+        <tr><td><span id="CheckMsg" style="color:Red"></span></td></tr>
+        <tr><td></td><td><input type="submit" id="Save" name="Save" value="保存" onclick="OnSave()"/></td></tr>
+    </tbody>
+</table>
+#parse("Admin/Foot.htm")
