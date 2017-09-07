@@ -14,7 +14,7 @@ namespace HuaGongWeb_ly
 
         public void ProcessRequest(HttpContext context)
         {
-            //master1
+            //master2
             context.Response.ContentType = "text/html";
             DataTable recommendPorducts = SqlHelper.ExecuteDataTable("select * from T_Products where IsRecommend=1");
             var data = new { RecommendPorducts = recommendPorducts.Rows, ProductCategories = CommonHelper.GetProductCategories(), Settings = CommonHelper.GetSettings() };
