@@ -4,3 +4,10 @@ C:\Users\Administrator\Desktop\HuaGongWeb\HuaGongWeb_ly\bin\HuaGongWeb_ly.pdb
 C:\Users\Administrator\Desktop\HuaGongWeb\HuaGongWeb_ly\bin\NVelocity.dll
 C:\Users\Administrator\Desktop\HuaGongWeb\HuaGongWeb_ly\obj\Debug\HuaGongWeb_ly.dll
 C:\Users\Administrator\Desktop\HuaGongWeb\HuaGongWeb_ly\obj\Debug\HuaGongWeb_ly.pdb
+C:\Users\Administrator\Desktop\HuaGongWeb-master\HuaGongWeb_ly\bin\HuaGongWeb_ly.dll.config
+C:\Users\Administrator\Desktop\HuaGongWeb-master\HuaGongWeb_ly\bin\HuaGongWeb_ly.dll
+C:\Users\Administrator\Desktop\HuaGongWeb-master\HuaGongWeb_ly\bin\HuaGongWeb_ly.pdb
+C:\Users\Administrator\Desktop\HuaGongWeb-master\HuaGongWeb_ly\bin\NVelocity.dll
+C:\Users\Administrator\Desktop\HuaGongWeb-master\HuaGongWeb_ly\obj\Debug\HuaGongWeb_ly.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\HuaGongWeb-master\HuaGongWeb_ly\obj\Debug\HuaGongWeb_ly.dll
+C:\Users\Administrator\Desktop\HuaGongWeb-master\HuaGongWeb_ly\obj\Debug\HuaGongWeb_ly.pdb
